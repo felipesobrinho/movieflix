@@ -2,10 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+  
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--background-start-rgb);
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 8px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,13 +50,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  width: 100vw;
-  overflow-x: hidden;
-
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
   margin: 0;
   padding: 0;

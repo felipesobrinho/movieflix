@@ -1,25 +1,31 @@
 import Image from "next/image";
 
-interface Card {
+export interface CardData {
     title: string;
-    resume: string,
+    resume: string
     poster_path: string;
+    release_date: Date;
 }
 
 
-export default function Card({ title, resume, poster_path }: Card) {
+export default function Card({ title, resume, release_date, poster_path }: CardData) {
+    const releaseDate = new Date(release_date)
+    const month = new Intl.DateTimeFormat('pt-BR', { month: 'long' }).format(releaseDate);
+    const formatedReleaseDate = `${releaseDate.getDate() + 1} de ${month} de ${releaseDate.getFullYear()}`.toString();
+
     return (
-        <div className="max-w-xs rounded-lg overflow-hidden flex flex-col items-center justify-center bg-slate-500 shadow-2xl">
+        <div className="max-w-xs overflow-hidden rounded-xl shadow-2xl bg-slate-600">
             <Image
-                className="min-h-[480px] shadow-lg"
+                className="shadow-xl min-h-[480px]"
                 src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
                 alt={title || "Movie poster"}
                 width={320}
                 height={480}
             />
-            <div className="px-6 py-4 max-h-24">
-                <div className="font-bold text-l">{title}</div>
-                <p className="text-gray-800 text-base">{resume}</p>
+            <div className="px-4 py-4 max-h-32 overflow-y-auto">
+                <div className="font-bold text-l text-zinc-950">{title}</div>
+                <p className="text-white my-1"> {formatedReleaseDate} </p>
+                <p className="text-gray-300"> {resume} </p>
             </div>
         </div>
     )

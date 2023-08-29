@@ -5,10 +5,10 @@ import useMovieData from "@/hooks/useMovieData"
 export default function Home() {
   const { data, isLoading, isError } = useMovieData();
 
-  console.log(data)
   return (
-    <div className="flex justify-center flex-col items-cente">
-      <div className="grid grid-cols-4 gap-5 mb-5">
+    <div className="overflow-y-scroll m-5">
+      <h2 className="text-center text-black text-2xl mb-4 font-bold"> Filmes mais votados 🌟</h2>
+      <div className="grid grid-cols-responsive gap-6 items-center justify-center">
         {!isLoading && data?.results.map(data => {
           return (
             <Card
@@ -16,19 +16,16 @@ export default function Home() {
               title={data.title ? data.title : data.original_name}
               poster_path={data.poster_path}
               resume={data.overview}
+              release_date={data.release_date ? data.release_date : data.first_air_date}
             />
           );
         })}
       </div>
       {isLoading &&
-        <div className="w-full h-full flex items-center justify-center">
-          <p> Carregando... </p>
-        </div>
+        <p> Carregando... </p>
       }
       {isError &&
-        <div className="w-[100vw] h-[100vh] flex items-center justify-center">
-          <p> Erro ao carregar</p>
-        </div>
+        <p> Erro ao carregar </p>
       }
     </ div>
   )
