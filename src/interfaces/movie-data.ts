@@ -4,8 +4,8 @@ export interface MovieData {
     poster_path: string,
     original_name: string,
     overview: string,
-    release_date: Date,
-    first_air_date: Date,
+    release_date: string,
+    first_air_date: string,
 }
 
 export interface MovieResponse {

@@ -4,14 +4,14 @@ export interface CardData {
     title: string;
     resume: string
     poster_path: string;
-    release_date: Date;
+    release_date: string;
 }
 
 
 export default function Card({ title, resume, release_date, poster_path }: CardData) {
-    const releaseDate = new Date(release_date)
-    const month = new Intl.DateTimeFormat('pt-BR', { month: 'long' }).format(releaseDate);
-    const formatedReleaseDate = `${releaseDate.getDate() + 1} de ${month} de ${releaseDate.getFullYear()}`.toString();
+    const releaseDate = new Date(release_date);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' } as const;
+    const formatedReleaseDate = releaseDate.toLocaleDateString('pt-BR', options);
 
     return (
         <div className="max-w-xs overflow-hidden rounded-xl shadow-2xl bg-slate-600">
