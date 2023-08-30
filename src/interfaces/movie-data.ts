@@ -1,4 +1,3 @@
-
 export interface MovieData {
     id: string,
     title: string,
