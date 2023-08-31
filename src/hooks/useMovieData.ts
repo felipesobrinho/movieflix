@@ -13,7 +13,7 @@ export default function useMovieData(url: string) {
             const response = await axios.get<MovieResponse>(`${url}${API_KEY}`)
             return response.data;
         },
-        retry: 2,
+
     })
 
     return {

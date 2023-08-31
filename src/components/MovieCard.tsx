@@ -23,7 +23,7 @@ export default function Card({ title, resume, release_date, poster_path }: CardD
                 height={480}
             />
             <div className="px-4 py-4 max-h-32 overflow-y-auto">
-                <div className="font-bold text-l text-zinc-950">{title}</div>
+                <h2 className="font-bold text-l text-zinc-950">{title}</h2>
                 <p className="text-white my-1"> {formatedReleaseDate} </p>
                 <p className="text-gray-300"> {resume} </p>
             </div>
