@@ -5,8 +5,8 @@ import Loading from "./Loading";
 export default function MovieList({ url }: { url: string }) {
     const { data, isLoading } = useMovieData(`${url}`);
     return (
-        <div>
-            <div className="grid grid-cols-responsive gap-6 items-center justify-center">
+        <>
+            <div className="grid grid-cols-responsive gap-6 items-center justify-center mb-10">
                 {!isLoading && data?.results.map(data => (
                     <Card
                         key={data.id}
@@ -21,6 +21,6 @@ export default function MovieList({ url }: { url: string }) {
                 isLoading &&
                 <Loading />
             }
-        </div >
+        </ >
     )
 }

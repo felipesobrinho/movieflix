@@ -7,6 +7,8 @@ export interface MovieData {
     release_date: string,
     first_air_date: string,
     runtime: any,
+    number_of_episodes: string,
+    number_of_seasons: string,
 }
 
 export interface MoviesResponse {
@@ -15,4 +17,11 @@ export interface MoviesResponse {
 
 export interface MovieResponse {
     results: MovieData,
+}
+
+export interface ImagesData {
+    width: number,
+    height: number,
+    file_path: string,
+    backdrops: Array<ImagesData>,
 }

@@ -14,7 +14,7 @@ export default function Card({ title, overview, release_date, poster_path }: Car
         <div className="max-w-xs overflow-hidden rounded-xl shadow-2xl bg-slate-600">
             <Image
                 className="shadow-xl min-h-[480px]"
-                src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
+                src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                 alt={title || "Movie poster"}
                 width={320}
                 height={480}
