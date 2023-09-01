@@ -72,7 +72,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         'responsive': 'repeat(auto-fill, 300px)',
-      }
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

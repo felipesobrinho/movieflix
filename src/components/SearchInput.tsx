@@ -17,7 +17,7 @@ export default function SearchInput() {
 
 
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col text-center justify-center">
+        <form onSubmit={handleSubmit} className="flex flex-col text-center justify-center my-4">
             <label className="relative block">
                 <span className="sr-only">Search</span>
                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">

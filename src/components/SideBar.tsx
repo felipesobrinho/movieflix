@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SideBarLinks from "./SideBarLink";
+import SearchInput from "./SearchInput";
 
 export default function SideBar() {
 
@@ -10,7 +11,7 @@ export default function SideBar() {
                     <h1 className="flex text-5xl pb-3"> Movie <p className="text-red-600">Flix </p> </h1>
                 </Link>
                 <div className="pt-2 font-bold">
-                    <h2 className="text-2xl py-2 text-gray-400 text-left "> Buscar </h2>
+                    <SearchInput />
                     {SideBarLinks.map(link => (
                         <div key={link.id}>
                             <Link href={link.href}>

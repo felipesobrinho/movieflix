@@ -6,8 +6,13 @@ export interface MovieData {
     overview: string,
     release_date: string,
     first_air_date: string,
+    runtime: any,
+}
+
+export interface MoviesResponse {
+    results: MovieData[],
 }
 
 export interface MovieResponse {
-    results: MovieData[],
+    results: MovieData,
 }

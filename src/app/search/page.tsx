@@ -2,7 +2,8 @@
 import MovieList from "@/components/MovieList";
 import { useSearchParams } from "next/navigation";
 
-const SEARCH_URL = `https://api.themoviedb.org/3/search/movie`
+const SEARCH_URL = `
+https://api.themoviedb.org/3/search/multi`
 const LANGUAGUE = "pt-BR"
 
 export default function SearchPage() {

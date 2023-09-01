@@ -3,8 +3,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ReactQueryProvider } from './ReactQueryProvider'
 import Sidebar from '@/components/SideBar'
-import Header from '@/components/Header'
-import Home from './page'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,7 +22,6 @@ export default function RootLayout({
         <body className={inter.className}>
           <Sidebar />
           <div className="flex flex-col w-full h-full">
-            <Header />
             {children}
           </div>
         </body>
