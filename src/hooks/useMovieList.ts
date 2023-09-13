@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const API_KEY = "aaa503732a8e1332e0a32c01e12ff533"
 
-export default function useMovieData(url: string) {
+export default function useMoviesList(url: string) {
     const query = useQuery<MoviesResponse, Error>({
         queryKey: ['movie-data'],
         queryFn: async () => {

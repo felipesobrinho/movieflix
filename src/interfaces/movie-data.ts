@@ -9,6 +9,7 @@ export interface MovieData {
     runtime: any,
     number_of_episodes: string,
     number_of_seasons: string,
+    media_type: string,
 }
 
 export interface MoviesResponse {
@@ -24,4 +25,19 @@ export interface ImagesData {
     height: number,
     file_path: string,
     backdrops: Array<ImagesData>,
+}
+
+export interface VideosData {
+    "results": [
+        {
+            "id": string,
+            "iso_639_1": string,
+            "iso_3166_1": string,
+            "key": string,
+            "name": string,
+            "site": string,
+            "size": number,
+            "type": string
+        }
+    ]
 }

@@ -1,3 +1,4 @@
+'use client'
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -6,6 +7,7 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
 	],
   theme: {
     container: {
@@ -71,7 +73,7 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       gridTemplateColumns: {
-        'responsive': 'repeat(auto-fill, 300px)',
+        'responsive': 'repeat(auto-fill, 310px)',
       },
     },
   },

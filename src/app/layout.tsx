@@ -26,6 +26,6 @@ export default function RootLayout({
           </div>
         </body>
       </html>
-    </ReactQueryProvider>
+    </ReactQueryProvider >
   )
 }
