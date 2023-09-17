@@ -9,7 +9,7 @@ export default function MovieList({ url }: { url: string }) {
             <div className="grid grid-cols-responsive gap-6 items-center justify-center mb-10">
                 {!isLoading && data?.results.map(data => (
                     <Card
-                        category={data.media_type == "tv" ? "tv" : "movie"}
+                        category={data.media_type == "movie" ? "movie" : "tv"}
                         key={data.id}
                         id={data.id}
                         title={data.title ? data.title : data.original_name}
