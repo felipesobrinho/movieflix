@@ -1,5 +1,5 @@
 'use client'
-import { formatReleaseDate } from "@/app/utils/formatReleaseDate";
+import { formatReleaseDate } from "@/app/utils/utils";
 import Image from "next/image";
 import Link from "next/link";
 import StarRating from "./StarRating";

@@ -1,12 +1,12 @@
-import { formatRuntime } from "@/app/utils/formatRuntime";
-import { getReleaseDateYear } from "@/app/utils/getReleaseDateYear";
 import useHighlightedMovie, { HighlightedData } from "@/hooks/useHighlightedMovie";
 import { Skeleton } from "./ui/skeleton";
 import Link from "next/link";
 import StarRating from "./StarRating";
+import { formatRuntime, getReleaseDateYear } from "@/app/utils/utils";
 
 export default function HighlightedMovie({ url, trending_url }: HighlightedData) {
     const { data, isLoading } = useHighlightedMovie({ url, trending_url });
+    console.log(data)
     return (
         <>
             <Link
@@ -21,7 +21,7 @@ export default function HighlightedMovie({ url, trending_url }: HighlightedData)
                     <div className="relative shadow-2xl w-full h-[50vh] flex items-center justify-center">
                         <img
                             className="object-cover w-full h-full"
-                            src={`https://image.tmdb.org/t/p/original/${data?.images.file_path}`}
+                            src={`https://image.tmdb.org/t/p/original/${data?.images?.file_path}`}
                             alt={data?.movie.title || "Movie poster"}
                             width={1920}
                             height={1080}

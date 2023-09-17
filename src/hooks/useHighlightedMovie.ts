@@ -14,9 +14,9 @@ export interface HighlightedData {
 export default function useHighlightedMovie({ url, trending_url, id }: HighlightedData) {
 
     const fetcher = async () => {
-        const response = await axios.get<MoviesResponse>(`${trending_url ? trending_url : ""}${API_KEY}`);
+        const response = await axios.get<MoviesResponse>(`${trending_url ? trending_url : ""}?api_key=${API_KEY}&language=pt-BR`);
         const firstItemId = response.data.results[0].id;
-        const getMovie = await axios.get<MovieData>(`${url}${firstItemId ? firstItemId : id}?api_key=${API_KEY}`);
+        const getMovie = await axios.get<MovieData>(`${url}${firstItemId ? firstItemId : id}?api_key=${API_KEY}&language=pt-BR`);
         const getImages = await axios.get<ImagesData>(`${url}${firstItemId ? firstItemId : id}/images?api_key=${API_KEY}`)
         return {
             movie: getMovie.data,

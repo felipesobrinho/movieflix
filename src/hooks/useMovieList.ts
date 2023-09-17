@@ -9,7 +9,7 @@ export default function useMoviesList(url: string) {
     const query = useQuery<MoviesResponse, Error>({
         queryKey: ['movie-data'],
         queryFn: async () => {
-            const response = await axios.get<MoviesResponse>(`${url}${API_KEY}`)
+            const response = await axios.get<MoviesResponse>(`${url}?api_key=${API_KEY}&language=pt-br`)
             return response.data;
         },
     })

@@ -9,11 +9,11 @@ const URL = "https://api.themoviedb.org/3/"
 export function useMovie({ id, category }: { id: string, category: string }) {
 
     const fetcher = async (id: string, category: string) => {
-        const getMovieCategory = await axios.get<MovieData>(`${URL}${category}/${id}?api_key=${API_KEY}`);
+        const getMovie = await axios.get<MovieData>(`${URL}${category}/${id}?api_key=${API_KEY}&language=pt-br`);
         const getMovieImages = await axios.get<ImagesData>(`${URL}${category}/${id}/images?api_key=${API_KEY}`)
         const getMovieVideos = await axios.get<VideoData>(`${URL}${category}/${id}/videos?api_key=${API_KEY}`)
         return {
-            movie: getMovieCategory.data,
+            movie: getMovie.data,
             images: getMovieImages.data,
             videos: getMovieVideos.data,
         }

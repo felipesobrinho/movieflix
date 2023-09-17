@@ -2,7 +2,7 @@
 import HighlightedMovie from "@/components/HighlightedMovie";
 import MovieList from "@/components/MovieList";
 
-const MOVIES_LIST_URL = "https://api.themoviedb.org/3/trending/movie/day?api_key="
+const MOVIES_LIST_URL = "https://api.themoviedb.org/3/trending/movie/day"
 const HIGHLIGHTED_MOVIE_URL = "https://api.themoviedb.org/3/movie/"
 
 export default function Home() {

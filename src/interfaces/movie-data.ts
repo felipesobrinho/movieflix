@@ -11,6 +11,19 @@ export interface MovieData {
     number_of_seasons: string,
     media_type: string,
     vote_average: number,
+    tagline: string,
+    budget: number,
+    revenue: number,
+    genres: [{
+        id: string,
+        name: string,
+    }]
+    production_companies: [{
+        id: string,
+        logo_path: string,
+        name: string,
+        origin_country: string,
+    }]
 }
 
 export interface MoviesResponse {
@@ -24,8 +37,9 @@ export interface MovieResponse {
 export interface ImagesData {
     width: number,
     height: number,
-    file_path: string,
-    backdrops: Array<ImagesData>,
+    backdrops: [{
+        file_path: string,
+    }]
 }
 
 export interface VideoData {
