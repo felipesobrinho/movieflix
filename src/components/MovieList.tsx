@@ -4,13 +4,12 @@ import Loading from "./Loading";
 
 export default function MovieList({ url }: { url: string }) {
     const { data, isLoading } = useMovieList(`${url}`);
-    console.log(data)
     return (
         <>
             <div className="grid grid-cols-responsive gap-6 items-center justify-center mb-10">
                 {!isLoading && data?.results.map(data => (
                     <Card
-                        category={data.media_type == "movie" ? "movie" : "tv"}
+                        category={data.media_type == "tv" ? "tv" : "movie"}
                         key={data.id}
                         id={data.id}
                         title={data.title ? data.title : data.original_name}

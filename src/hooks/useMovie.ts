@@ -1,4 +1,4 @@
-import { ImagesData, MovieData, VideosData } from "@/interfaces/movie-data";
+import { ImagesData, MovieData, VideoData } from "@/interfaces/movie-data";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
@@ -11,7 +11,7 @@ export function useMovie({ id, category }: { id: string, category: string }) {
     const fetcher = async (id: string, category: string) => {
         const getMovieCategory = await axios.get<MovieData>(`${URL}${category}/${id}?api_key=${API_KEY}`);
         const getMovieImages = await axios.get<ImagesData>(`${URL}${category}/${id}/images?api_key=${API_KEY}`)
-        const getMovieVideos = await axios.get<VideosData>(`${URL}${category}/${id}/videos?api_key=${API_KEY}`)
+        const getMovieVideos = await axios.get<VideoData>(`${URL}${category}/${id}/videos?api_key=${API_KEY}`)
         return {
             movie: getMovieCategory.data,
             images: getMovieImages.data,

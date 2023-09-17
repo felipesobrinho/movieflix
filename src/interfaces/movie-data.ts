@@ -27,17 +27,18 @@ export interface ImagesData {
     backdrops: Array<ImagesData>,
 }
 
-export interface VideosData {
-    "results": [
-        {
-            "id": string,
-            "iso_639_1": string,
-            "iso_3166_1": string,
-            "key": string,
-            "name": string,
-            "site": string,
-            "size": number,
-            "type": string
-        }
-    ]
+export interface VideoData {
+    results: [{
+        iso_639_1: string,
+        iso_3166_1: string,
+        name: string,
+        key: string,
+        site: string,
+        size: number,
+        type: string,
+        official: boolean,
+        published_at: string,
+        id: string
+    }]
+
 }

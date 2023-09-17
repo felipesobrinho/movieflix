@@ -1,11 +1,13 @@
 'use client'
 import { useMovie } from "@/hooks/useMovie"
-import Image from "next/image";
-import { formatReleaseDate } from "../utils/formatReleaseDate";
 import { getReleaseDateYear } from "../utils/getReleaseDateYear";
 import { formatRuntime } from "../utils/formatRuntime";
 import { Skeleton } from "@/components/ui/skeleton";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import Image from "next/image";
+import Modal from "react-modal";
+import ReactPlayer from "react-player"
 
 export default function MoviePage({
     searchParams,
@@ -13,22 +15,27 @@ export default function MoviePage({
     searchParams: { id: string, category: string }
 }) {
     const { data, isLoading } = useMovie({ id: searchParams.id, category: searchParams.category });
+    const [showModal, setShowModal] = useState(false);
+
 
     const getTrailer = () => {
         const trailer = data?.videos.results.find(video => video.type == 'Trailer')
-        return getVideo(`${trailer?.key}`);
+        return `https://www.youtube.com/embed/${trailer?.key}?rel=0&showinfo=0&autoplay=1`
     }
 
-    const getVideo = (key: string) => {
-        if (!key) return null
-        return `https://www.youtube.com/embed/${key}?rel=0&showinfo=0&autoplay=1`
+    const toggleShowModal = () => {
+        setShowModal(true);
+    }
+
+    const closeModal = () => {
+        setShowModal(false);
     }
 
     return (
         <div className="w-full h-full overflow-hidden shadow-2xl bg-slate-900 cursor-pointer overflow-y-scroll">
             {!isLoading &&
                 <div className="relative shadow-2xl h-[50vh] flex items-center justify-center">
-                    <img
+                    <Image
                         className="object-cover w-full h-full"
                         src={`https://image.tmdb.org/t/p/original/${data?.images.backdrops[0].file_path}`}
                         alt={data?.movie.title || "Movie poster"}
@@ -49,9 +56,37 @@ export default function MoviePage({
                                 </p>
                             </div>
                             <p className="text-gray-200 max-w-[50%] font-semibold"> {data?.movie.overview} </p>
-                            <Link href={`${getTrailer()}`}>
-                                Ver Trailer
-                            </Link>
+                            <Button variant={"outline"} className="my-3 bg-transparent font-semibold" onClick={() => toggleShowModal()}> Ver Trailer </Button>
+                            <Modal
+                                isOpen={showModal}
+                                onRequestClose={closeModal}
+                                contentLabel='Video Modal'
+                                style={{
+                                    overlay: {
+                                        backgroundColor: "rgba(0,0,0,0.2)",
+                                    },
+                                    content: {
+                                        width: "75vw",
+                                        height: "75vh",
+                                        margin: "auto",
+                                        padding: "0px",
+                                        border: "none",
+                                        overflow: "hidden",
+                                    },
+                                }}
+                            >
+                                {showModal &&
+                                    <div>
+                                        <ReactPlayer
+                                            url={getTrailer()}
+                                            height='75vh'
+                                            width='75vw'
+                                            controls={true}
+                                            className="bg-dark overflow-hidden"
+                                        />
+                                    </div>
+                                }
+                            </Modal>
                         </div>
                     </div>
                 </div>
@@ -65,6 +100,7 @@ export default function MoviePage({
                     <Skeleton className="w-1/3 h-16 bg-slate-300 items-center mx-10" />
                 </div>
             }
+
         </div >
     )
 }
