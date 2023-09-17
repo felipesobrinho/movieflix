@@ -29,12 +29,6 @@ const SideBarLinks: SideBarLinkData[] = [
         href: "/series",
         icon: BiSolidMoviePlay,
     },
-    {
-        id: 'icon-4',
-        title: "TV Show",
-        href: "/tv-show",
-        icon: BiSolidTv,
-    },
 ]
 
 export default SideBarLinks;
