@@ -8,6 +8,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Modal from "react-modal";
 import ReactPlayer from "react-player"
+import StarRating from "@/components/StarRating";
 
 export default function MoviePage({
     searchParams,
@@ -17,10 +18,12 @@ export default function MoviePage({
     const { data, isLoading } = useMovie({ id: searchParams.id, category: searchParams.category });
     const [showModal, setShowModal] = useState(false);
 
-
     const getTrailer = () => {
         const trailer = data?.videos.results.find(video => video.type == 'Trailer')
-        return `https://www.youtube.com/embed/${trailer?.key}?rel=0&showinfo=0&autoplay=1`
+        if (trailer) {
+            return `https://www.youtube.com/embed/${trailer?.key}?rel=0&showinfo=0&autoplay=1`
+        }
+        return ""
     }
 
     const toggleShowModal = () => {
@@ -55,7 +58,8 @@ export default function MoviePage({
                                     }
                                 </p>
                             </div>
-                            <p className="text-gray-200 max-w-[50%] font-semibold"> {data?.movie.overview} </p>
+                            <StarRating vote_average={data?.movie.vote_average} />
+                            <p className="text-gray-200 max-w-[50%] font-semibold my-1"> {data?.movie.overview} </p>
                             <Button variant={"outline"} className="my-3 bg-transparent font-semibold" onClick={() => toggleShowModal()}> Ver Trailer </Button>
                             <Modal
                                 isOpen={showModal}

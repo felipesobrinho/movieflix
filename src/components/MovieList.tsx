@@ -16,6 +16,7 @@ export default function MovieList({ url }: { url: string }) {
                         poster_path={data.poster_path}
                         overview={data.overview}
                         release_date={data.release_date ? data.release_date : data.first_air_date}
+                        vote_average={data.vote_average}
                     />
                 ))}
             </div>

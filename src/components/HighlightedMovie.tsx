@@ -3,6 +3,7 @@ import { getReleaseDateYear } from "@/app/utils/getReleaseDateYear";
 import useHighlightedMovie, { HighlightedData } from "@/hooks/useHighlightedMovie";
 import { Skeleton } from "./ui/skeleton";
 import Link from "next/link";
+import StarRating from "./StarRating";
 
 export default function HighlightedMovie({ url, trending_url }: HighlightedData) {
     const { data, isLoading } = useHighlightedMovie({ url, trending_url });
@@ -37,6 +38,7 @@ export default function HighlightedMovie({ url, trending_url }: HighlightedData)
                                                 `${data?.movie.number_of_seasons} temporadas`
                                         }
                                     </p>
+                                    <StarRating vote_average={data?.movie.vote_average} />
                                 </div>
                                 <p className="text-gray-200 max-w-[50%] font-semibold"> {data?.movie.overview} </p>
                             </div>

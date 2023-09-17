@@ -10,6 +10,7 @@ export interface MovieData {
     number_of_episodes: string,
     number_of_seasons: string,
     media_type: string,
+    vote_average: number,
 }
 
 export interface MoviesResponse {
